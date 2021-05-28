@@ -1,13 +1,23 @@
-all_sensors = ['INDEX','TIME', 'FL_VSS', 'FR_VSS', 'BL_VSS', 'BR_VSS', 'FL_SUS_POT', 'FR_SUS_POT', 'BL_SUS_POT', 'BR_SUS_POT',
-               'FL_BRK_TMP', 'FR_BRK_TMP', 'BL_BRK_TMP', 'BR_BRK_TMP', 'F_BRK_PRES', 'B_BRK_PRES', 'COOL_TEMP',
-               'STEER_ANG', 'TPS', 'OIL_TEMP', 'OIL_PRES', 'MAP', 'MAT', 'NEUT', 'LAMBDA1', 'LAMBDA2', 'ACCELX', 'ACCELY', 'ACCELZ', 'GYROX',
-               'GYROY', 'GYROZ', 'MAGNETX', 'MAGNETY', 'MAGNETZ','BATV', 'ENGINE_RPM', 'VEHICLE_GEAR', 'IGNITION_CUT']
+all_sensors = ['INDEX','TIME', 
+                'FL_VSS', 'FR_VSS', 'BL_VSS', 'BR_VSS', 
+                'FL_BRK_TMP', 'FR_BRK_TMP', 'BL_BRK_TMP', 'BR_BRK_TMP', 
+                'FL_SUS_POT', 'FR_SUS_POT', 'BL_SUS_POT', 'BR_SUS_POT',
+                'F_BRK_PRES', 'B_BRK_PRES', 'STEER_ANG',
+                'TPS', 'OIL_PRES', 'OIL_TEMP',  'COOL_TEMP',
+                'MAP', 'MAT', 
+                'NEUT', 
+                "LAMBDA1", "LAMBDA2", 
+                'ACCELX', 'ACCELY', 'ACCELZ', 
+                'GYROX', 'GYROY', 'GYROZ', 
+                'MAGNETX', 'MAGNETY', 'MAGNETZ', 
+
+                'BATV', 'ENGINE_RPM', 'VEHICLE_GEAR', 'IGNITION_CUT']
 
 all_xbee_sensors = ['FL_VSS', 'FR_VSS', 'BL_VSS', 'BR_VSS', 
-                'FL_SUS_POT', 'FR_SUS_POT', 'BL_SUS_POT', 'BR_SUS_POT',
                 'FL_BRK_TMP', 'FR_BRK_TMP', 'BL_BRK_TMP', 'BR_BRK_TMP', 
-                'F_BRK_PRES', 'B_BRK_PRES', 'COOL_TEMP', 'STEER_ANG',
-                'TPS', 'OIL_TEMP', 'OIL_PRES', 
+                'FL_SUS_POT', 'FR_SUS_POT', 'BL_SUS_POT', 'BR_SUS_POT',
+                'F_BRK_PRES', 'B_BRK_PRES', 'STEER_ANG',
+                'TPS', 'OIL_PRES', 'OIL_TEMP',  'COOL_TEMP',
                 'MAP', 'MAT', 
                 'NEUT', 
                 "LAMBDA1", "LAMBDA2", 
@@ -24,7 +34,7 @@ group1 = ['FL_VSS', 'FR_VSS', 'BL_VSS', 'BR_VSS', 'ACCELX', 'ACCELY', 'ACCELZ']
 group2 = ['FL_SUS_POT', 'FR_SUS_POT', 'BL_SUS_POT', 'BR_SUS_POT', 'STEER_ANG', 'GYROX', 'GYROY', 'GYROZ', 'MAGNETX',
           'MAGNETY', 'MAGNETZ']
 group3 = ['TPS', 'OIL_PRES', 'OIL_TEMP', 'MAP', 'MAT']
-group4 = ['FL_BRK_TMP', 'FR_BRK_TMP', 'BL_BRK_TMP', 'BR_BRK_TMP', 'F_BRK_PRES', 'B_BRK_PRES', 'COOL_TEMP']
+group4 = ['FL_BRK_TMP', 'FR_BRK_TMP', 'BL_BRK_TMP', 'BR_BRK_TMP', 'F_BRK_PRES', 'B_BRK_PRES', 'COOL_TEMP', 'BATV', 'ENGINE_RPM', 'VEHICLE_GEAR', 'IGNITION_CUT']
 
 groups = [group1, group2, group3, group4]
 
@@ -199,7 +209,7 @@ sensors_info = {
         'id': 'NEUT',
         'units': '', #boolean
         'min_value': 0,
-        'max_value': 100,
+        'max_value': 1,
     },
     'LAMBDA1': {
         'label': 'Lambda 1',
