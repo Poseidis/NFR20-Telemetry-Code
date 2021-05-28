@@ -1,3 +1,4 @@
+import csv
 import time
 import struct
 import serial
@@ -7,7 +8,7 @@ import telemetry_csv as tc
 import sensor_list_test as sl
 
 # from digi.xbee.devices import XBeeDevice
-csv_name = "Telemetry_Data/test_data.csv"
+csv_name = "TelemetryData/test_data.csv"
 
 
 def select_serial_port():
@@ -41,11 +42,13 @@ time.sleep(1)
 index = 0
 start_time = time.time()
 size = (len(sl.all_xbee_sensors)+1) * 2 # for consistency, -1 from time, +1 for parity byte
+                                        # short is 2 bytes
+csv_header = np.concatenate((np.array(['INDEX', 'TIME']), sl.all_xbee_sensors))
 id_bytes = b'\x80\x01'
 
-sig_list = np.ones(size)  # multiplications for each sensor values turning short back to float, default as 1 for now
+sig_list = np.ones((int)(size/2 - 1))  # multiplications for each sensor values turning short back to float, default as 1 for now
 
-tc.csv_create_header(csv_name, sl.all_xbee_sensors)
+tc.csv_create_header(csv_name, csv_header)
 
 
 while True:
@@ -70,11 +73,14 @@ while True:
     print(sensor_values[1])
 
     csv_list = np.concatenate((np.array([index, current_time]), sensor_values))
+    
     index += 1
-    tc.csv_store_data(csv_name, sl.all_xbee_sensors, csv_list)
+    print(len(sl.all_xbee_sensors))
+    print(len(sensor_values))
+    tc.csv_store_data(csv_name, sl.all_sensors, csv_list)
     print(csv_list)
 
     ''' wait '''
-    time.sleep(0.1)  # default 0.1
+    #time.sleep(0.1)  # default 0.1
     ''' flush input stream '''
     device.flushInput()

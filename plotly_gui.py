@@ -16,7 +16,7 @@ colors = {
 }
 
 # change this file that the csv is stored in
-file = 'Telemetry_Data/test_data.csv'
+file = 'TelemetryData/test_data.csv'
 
 df = pd.read_csv(file)
 num_clicks = 1
@@ -99,7 +99,7 @@ app.layout = html.Div([
                                     "ranges": {"green": [0, 1.5], "yellow": [1.5, 1.75], "red": [1.75, 2]}},
                              showCurrentValue=True,
                              size=1000,
-                             max=2 ^ (1 / 2 / 3 / 4),
+                             max=2 ^ 2,
                              ),
             html.H4("Front Left Suspension Potentiometer"),
             daq.GraduatedBar(id='fl_sus_pot_grad_bar',
